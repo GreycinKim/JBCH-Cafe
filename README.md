@@ -1,5 +1,14 @@
 # ☕ Full-Stack POS System with Analytics, Auth, and Admin Calendar
 
+## 🧰 toolkit
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=white)
+![https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=white](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![SCSS](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)&nbsp;
+![Python](https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=white)&nbsp;
+![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+![Postgres](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=white)
+
 ## 🧠 Overview
 
 This project is a full-featured **Point of Sale (POS) System** for a café. It includes:
