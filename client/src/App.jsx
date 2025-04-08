@@ -1,18 +1,13 @@
-import { useState } from 'react'
-import logo from '/JBCH_Logo.png';
+import { Routes, Route } from 'react-router-dom';
+import Login from './pages/Login';
 
 function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-      <>
-        <h1 className={'text-center text-color'}>Hello World</h1>
-      <div className={'container'}>
-        <img className={'logo'} src={logo} alt="logo" />
-      </div>
-      </>
-
-  )
+    return (
+        <Routes>
+            <Route path="/login" element={<Login />} />
+            {/* add other routes later */}
+        </Routes>
+    );
 }
 
-export default App
+export default App;
