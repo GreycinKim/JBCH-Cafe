@@ -17,13 +17,6 @@ function Login() {
     const passwordRef = useRef(null);
 
 
-    function handleUsername(e) {
-        setUsername(e.target.value);
-    }
-    function handlePassword(e) {
-        setPassword(e.target.value);
-    }
-
     // When user submits the form
     async function handleSubmit(e) {
         e.preventDefault(); // Prevent page reload on form submit
@@ -70,7 +63,7 @@ function Login() {
                     type="text"
                     autoFocus={true} // So user can type write away
                     value={username}
-                    onChange={handleUsername}
+                    onChange={(e) => setUsername(e.target.value)}
                     onKeyDown={handleUsernameKeyDown} // For if user presses enter while in username field
                     className="w-full border border-gray-300 px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
                     placeholder="Username"
@@ -79,7 +72,7 @@ function Login() {
                     type="password"
                     ref={passwordRef} // Set the reference flag here so useRef knows the location where to focus
                     value={password}
-                    onChange={handlePassword}
+                    onChange={(e) => setPassword(e.target.value)}
                     className="w-full border border-gray-300 px-4 py-2 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
                     placeholder="Password"
                 />
