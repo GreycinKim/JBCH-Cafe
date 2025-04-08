@@ -4,7 +4,7 @@ const API_BASE_URL = 'http://localhost:5000'; // REPLACE LATER (Flask Backend UR
 
 // A function that sends login data to the backend
 export async function loginUser(username, password) {
-    const response = await axios.post(`${API_BASE_URL}/login`, {
+    const response = await axios.post(`${API_BASE_URL}/login`, { // This sends an HTTP post request to server endpoint
         username,
         password,
     });
