@@ -22,6 +22,9 @@ function NavBar(){
                 <NavLink to="/orders">
                     <h1>Orders</h1>
                 </NavLink>
+                <NavLink to="/tabs">
+                    <h1>Tabs</h1>
+                </NavLink>
                 <NavLink to="/dashboard">
                     <h1>Dashboard</h1>
                 </NavLink>

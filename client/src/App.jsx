@@ -5,6 +5,7 @@ import Orders from './pages/Orders';
 import Dashboard from './pages/Dashboard.jsx';
 import Calendar from './pages/Calendar.jsx';
 import AppLayout from "./pages/AppLayout.jsx";
+import Tabs from "./pages/Tabs.jsx";
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/pos" element={<Pos />} />
                 <Route path="/orders" element={<Orders />} />
+                <Route path="/tabs" element={<Tabs />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/calendar" element={<Calendar />} />
             </Route>
