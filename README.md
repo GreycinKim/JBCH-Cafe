@@ -3,14 +3,15 @@
 ## 🧰 toolkit
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=white)
 ![https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=white](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![SCSS](https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)&nbsp;
 ![Python](https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=white)&nbsp;
 ![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
 ![Postgres](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=white)
 
 # Demo
-https://drive.google.com/file/d/1gXqOkUylMEd9uap7tssXMtrdpCfTCPQ-/view?usp=sharing
+[![Watch Video](https://img.youtube.com/vi/YOUTUBE_ID/0.jpg)]([https://drive.google.com/file/d/FILE_ID/view](https://drive.google.com/file/d/1gXqOkUylMEd9uap7tssXMtrdpCfTCPQ-/view?usp=sharing))
+
+
 
 ## 🧠 Overview
 
