@@ -4,6 +4,7 @@ import { createOrder } from "../services/orderService";
 function SubmitButton({ cart, setCart }) {
     const [showPopup, setShowPopup] = useState(false);
     const [customerName, setCustomerName] = useState("");
+    const [isLoading, setIsLoading] = useState(false);
 
     const handlePayment = async (method) => {
         if (!cart || cart.length === 0) {
@@ -16,19 +17,21 @@ function SubmitButton({ cart, setCart }) {
             return;
         }
 
+        setIsLoading(true);
         try {
             const result = await createOrder({
                 name: customerName?.trim() || "Guest",
-                cart: [...cart], // Ensure it's a real array copy
-                payment: { type: method }, // wrap as object if backend expects it
+                cart: [...cart],
+                payment: { type: method },
             });
-
             console.log("Order submitted:", result);
             setCart([]);
             setCustomerName("");
             setShowPopup(false);
         } catch (error) {
             alert("Failed to submit order: " + error.message);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -36,9 +39,10 @@ function SubmitButton({ cart, setCart }) {
         <>
             <button
                 onClick={() => setShowPopup(true)}
-                className="py-2 px-4 rounded shadow font-semibold transition-colors duration-200 bg-blue-500 hover:bg-blue-600 text-white"
+                disabled={isLoading}
+                className="py-2 px-4 rounded shadow font-semibold transition-colors duration-200 bg-blue-500 hover:bg-blue-600 text-white disabled:bg-gray-400"
             >
-                Pay Now
+                {isLoading ? "Processing..." : "Pay Now"}
             </button>
 
             {showPopup && (
@@ -46,9 +50,10 @@ function SubmitButton({ cart, setCart }) {
                     <div className="bg-white p-6 rounded-lg shadow-lg w-80 text-center relative">
                         <button
                             onClick={() => setShowPopup(false)}
+                            disabled={isLoading}
                             className="absolute top-2 right-2 text-gray-500 hover:text-black text-xl font-bold"
                         >
-                            &times;
+                            ×
                         </button>
 
                         <div className="mb-4">
@@ -60,6 +65,7 @@ function SubmitButton({ cart, setCart }) {
                                 onChange={(e) => setCustomerName(e.target.value)}
                                 placeholder="Customer name"
                                 className="w-full px-3 py-2 border rounded"
+                                disabled={isLoading}
                             />
                         </div>
 
@@ -70,13 +76,14 @@ function SubmitButton({ cart, setCart }) {
                                 <button
                                     key={method}
                                     onClick={() => handlePayment(method)}
+                                    disabled={isLoading}
                                     className={`${
                                         method === "Venmo"
-                                            ? "bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+                                            ? "bg-blue-500 hover:bg-blue-400 border-blue-700 hover:border-blue-500"
                                             : method === "Cash"
-                                                ? "bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded"
-                                                : "bg-purple-500 hover:bg-purple-400 text-white font-bold py-2 px-4 border-b-4 border-purple-700 hover:border-purple-500 rounded"
-                                    } text-white px-4 py-2 rounded`}
+                                                ? "bg-green-500 hover:bg-green-400 border-green-700 hover:border-green-500"
+                                                : "bg-purple-500 hover:bg-purple-400 border-purple-700 hover:border-purple-500"
+                                    } text-white font-bold py-2 px-4 border-b-4 rounded disabled:bg-gray-400`}
                                 >
                                     {method}
                                 </button>

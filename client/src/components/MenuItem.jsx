@@ -12,8 +12,8 @@ const boxItems = [
     { id: 11, name: "Mango Lemonade", price: 3 },
     { id: 12, name: "MilkShake", price: 4 },
     { id: 13, name: "Add Shot", price: 1 },
-    { id: 14, name: "Test", price: 3 },
-    { id: 15, name: "Test", price: 3 },
+    { id: 14, name: "Test 1", price: 3 }, // Fixed duplicate name
+    { id: 15, name: "Test 2", price: 3 }, // Fixed duplicate name
 ];
 
 function MenuItem({ addToCart }) {

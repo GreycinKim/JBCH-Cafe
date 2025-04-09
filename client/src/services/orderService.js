@@ -2,7 +2,6 @@ const API_URL = "http://localhost:5000/api/orders";
 
 export const createOrder = async ({ name, cart, payment }) => {
     try {
-        // Validate inputs before sending
         if (!cart || cart.length === 0) {
             throw new Error("Cart is empty or missing");
         }
@@ -11,7 +10,7 @@ export const createOrder = async ({ name, cart, payment }) => {
         }
 
         const payload = { name, cart, payment };
-        console.log("Sending order:", payload); // Debug log
+        console.log("Sending order:", payload);
 
         const response = await fetch(API_URL, {
             method: "POST",
@@ -24,7 +23,7 @@ export const createOrder = async ({ name, cart, payment }) => {
         const data = await response.json();
 
         if (!response.ok) throw new Error(data.error || "Order failed");
-        return data;
+        return data; // Expecting full order object
     } catch (err) {
         console.error("createOrder error:", err.message);
         throw err;
@@ -35,7 +34,8 @@ export const getOrders = async () => {
     try {
         const response = await fetch(API_URL);
         const data = await response.json();
-        return data;
+        if (!response.ok) throw new Error(data.error || "Failed to fetch orders");
+        return data; // Expecting array of orders
     } catch (err) {
         console.error("getOrders error:", err.message);
         throw err;

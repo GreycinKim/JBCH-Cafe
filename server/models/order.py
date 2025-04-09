@@ -4,7 +4,6 @@ from datetime import datetime
 
 class Order(db.Model):
     __tablename__ = "orders"
-
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     payment = db.Column(db.Text)  # store JSON (e.g., {type: "Venmo"})

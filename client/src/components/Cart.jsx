@@ -1,7 +1,11 @@
 import SubmitButton from "./SubmitButton";
 
 function Cart({ cart, setCart }) {
-    const total = cart.reduce((acc, item) => acc + item.price, 0);
+    const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
+    const removeItem = (itemId) => {
+        setCart(cart.filter((item) => item.id !== itemId));
+    };
 
     return (
         <section className="p-4">
@@ -12,11 +16,21 @@ function Cart({ cart, setCart }) {
                 ) : (
                     cart.map((item, index) => (
                         <li
-                            key={index}
-                            className="bg-white p-2 rounded shadow border text-gray-800 flex justify-between"
+                            key={`${item.id}-${index}`} // Unique key for duplicates
+                            className="bg-white p-2 rounded shadow border text-gray-800 flex justify-between items-center"
                         >
-                            <span>{item.name}</span>
-                            <span>${item.price.toFixed(2)}</span>
+                            <span>
+                                {item.name} (x{item.quantity})
+                            </span>
+                            <div className="flex items-center">
+                                <span>${(item.price * item.quantity).toFixed(2)}</span>
+                                <button
+                                    onClick={() => removeItem(item.id)}
+                                    className="ml-2 text-red-500 hover:text-red-700"
+                                >
+                                    ×
+                                </button>
+                            </div>
                         </li>
                     ))
                 )}
