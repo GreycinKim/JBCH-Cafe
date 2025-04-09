@@ -1,6 +1,9 @@
 from db import db
 import json
+import pytz
 from datetime import datetime
+
+
 
 class Order(db.Model):
     __tablename__ = "orders"
@@ -9,7 +12,7 @@ class Order(db.Model):
     payment = db.Column(db.Text)  # store JSON (e.g., {type: "Venmo"})
     items = db.Column(db.Text)    # store JSON-encoded cart
     total = db.Column(db.Float)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=lambda: datetime.now(pytz.timezone("America/Los_Angeles")))
 
     def to_dict(self):
         return {

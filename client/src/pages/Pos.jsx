@@ -42,20 +42,6 @@ function Pos() {
             </div>
             <div className="w-1/4 p-4 bg-gray-100 shadow-lg border border-cyan-100 rounded-lg">
                 <Cart cart={cart} setCart={setCart} />
-                <div className="mt-4">
-                    <h2 className="text-lg font-semibold">Recent Orders</h2>
-                    {orders.length === 0 ? (
-                        <p className="text-gray-500">No orders yet.</p>
-                    ) : (
-                        <ul className="space-y-1">
-                            {orders.map((order) => (
-                                <li key={order.id} className="text-sm text-gray-700">
-                                    {order.name} - ${order.total.toFixed(2)}
-                                </li>
-                            ))}
-                        </ul>
-                    )}
-                </div>
             </div>
         </div>
     );

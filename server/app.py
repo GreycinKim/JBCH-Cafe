@@ -4,6 +4,8 @@ from flask_jwt_extended import JWTManager
 from db import db
 from routes.events import events_bp
 from routes.auth import auth_bp
+from routes.summary import summary_bp
+
 
 app = Flask(__name__)
 CORS(app)
@@ -17,6 +19,7 @@ jwt = JWTManager(app)
 
 app.register_blueprint(events_bp)
 app.register_blueprint(auth_bp)
+app.register_blueprint(summary_bp)
 
 # Create tables once at startup
 with app.app_context():

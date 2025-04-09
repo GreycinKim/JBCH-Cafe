@@ -4,7 +4,7 @@ from models.event import Event
 
 from db import db
 import json
-
+from collections import defaultdict
 events_bp = Blueprint('events', __name__, url_prefix="/api")
 
 # GET all orders
