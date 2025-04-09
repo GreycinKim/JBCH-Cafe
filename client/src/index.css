@@ -34,3 +34,54 @@
     font-weight: 700;
     text-decoration: underline;
 }
+
+/* CalendarPage.css */
+
+.calendar-wrapper {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    background-color: #E7E7E8;
+}
+
+.calendar-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-top: 2px solid #C9CACC;
+    border-radius: 0;
+    padding: 1rem 2rem;
+}
+
+.calendar-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.download-btn {
+    background-color: #13B5EA;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.download-btn:hover {
+    background-color: #0ca2d6;
+}
+
+.rbc-event {
+    background-color: #005599 !important;
+    color: white !important;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    padding: 2px 6px;
+}
