@@ -9,6 +9,9 @@
 ![Postgres](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=white)
 
+# Demo
+https://drive.google.com/file/d/1gXqOkUylMEd9uap7tssXMtrdpCfTCPQ-/view?usp=sharing
+
 ## 🧠 Overview
 
 This project is a full-featured **Point of Sale (POS) System** for a café. It includes:
