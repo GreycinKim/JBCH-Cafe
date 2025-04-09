@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = 'http://localhost:5000'; // REPLACE LATER (Flask Backend URL
+const API_BASE_URL = 'http://192.168.86.97:5000'; // REPLACE LATER (Flask Backend URL
 
 // A function that sends login data to the backend
 export async function loginUser(username, password) {

@@ -3,7 +3,7 @@ from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from db import db
 from routes.events import events_bp
-from routes.auth import auth_bp  # if using auth
+from routes.auth import auth_bp 
 import os
 
 app = Flask(__name__)
