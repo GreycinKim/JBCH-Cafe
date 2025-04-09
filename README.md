@@ -9,7 +9,7 @@
 ![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=white)
 
 # Demo
-[![Watch Video](https://img.youtube.com/vi/YOUTUBE_ID/0.jpg)]([https://drive.google.com/file/d/FILE_ID/view](https://drive.google.com/file/d/1gXqOkUylMEd9uap7tssXMtrdpCfTCPQ-/view?usp=sharing))
+[![Watch Video](https://img.youtube.com/vi/YOUTUBE_ID/0.jpg)](https://drive.google.com/file/d/1gXqOkUylMEd9uap7tssXMtrdpCfTCPQ-/view?usp=sharing)
 
 
 
