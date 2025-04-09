@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:5000/api/orders";
+const API_URL = "http://192.168.86.97:5000/api/orders";
 
 export const createOrder = async ({ name, cart, payment }) => {
     try {

@@ -37,7 +37,7 @@ function Pos() {
     return (
         <div className="flex h-screen">
             <div className="w-3/4 p-4">
-                <h1 className="text-2xl font-bold mb-4">Coffee Shop POS</h1>
+                <h1 className="text-2xl font-bold mb-4">La Caf&eacute; POS</h1>
                 <MenuItem addToCart={addToCart} />
             </div>
             <div className="w-1/4 p-4 bg-gray-100 shadow-lg border border-cyan-100 rounded-lg">
