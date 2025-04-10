@@ -24,9 +24,9 @@ db.init_app(app)
 jwt = JWTManager(app)
 
 app.register_blueprint(auth_bp, url_prefix='/api')
-app.register_blueprint(events_bp, url_prefix='/api')
-app.register_blueprint(summary_bp, url_prefix='/api')
-app.register_blueprint(tabs_bp, url_prefix='/api')
+app.register_blueprint(events_bp)
+app.register_blueprint(summary_bp)
+app.register_blueprint(tabs_bp)
 
 
 
