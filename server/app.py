@@ -6,12 +6,17 @@ from routes.events import events_bp
 from routes.auth import auth_bp
 from routes.summary import summary_bp
 from routes.tabs import tabs_bp
+from dotenv import load_dotenv
+import os
 
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:Greyshin9@localhost:5432/pos_db'
+# Use environment variables instead of hardcoding
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DB_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['JWT_SECRET_KEY'] = 'super-secret'
 
