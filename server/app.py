@@ -13,7 +13,7 @@ import os
 load_dotenv()
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, supports_credentials=True, resources={r"/api/*": {"origins": "http://raspberrypi.local"}})
 
 # Use environment variables instead of hardcoding
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DB_URL')
