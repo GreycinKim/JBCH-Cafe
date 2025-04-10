@@ -1,6 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import CafeLogo from "../assets/Cafe-logo.png";
 import AppLayout from "../pages/AppLayout.jsx";
+import logout from "../assets/logout.png";
 
 function NavBar(){
 
@@ -31,11 +32,10 @@ function NavBar(){
                 <NavLink to="/calendar">
                     <h1>Calendar</h1>
                 </NavLink>
-                <button
+                <img
+                    src={logout} alt="logout"
                     onClick={handleLogout}
-                >
-                    <h1>Log out</h1>
-                </button>
+                    className="w-10 h-10 object-contain hover:scale-110 transition-transform" />
             </div>
         </div>
     );

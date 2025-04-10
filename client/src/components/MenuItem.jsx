@@ -3,17 +3,17 @@ const boxItems = [
     { id: 2, name: "Latte", price: 3 },
     { id: 3, name: "Caramel Macchiato", price: 3 },
     { id: 4, name: "White Choc. Mocha", price: 3 },
-    { id: 5, name: "Ube Latte", price: 3 },
-    { id: 6, name: "Yuzu Tea", price: 2 },
-    { id: 7, name: "Hot Chocolate", price: 2 },
-    { id: 8, name: "Shaken Espresso", price: 3 },
-    { id: 9, name: "Grapefruit Tea", price: 2 },
-    { id: 10, name: "Strawberry Lemonade", price: 3 },
+    { id: 5, name: "Shaken Espresso", price: 3 },
+    { id: 6, name: "Ube Latte", price: 3 },
+    { id: 7, name: "Yuzu Tea", price: 2 },
+    { id: 8, name: "Grapefruit Tea", price: 2 },
+    { id: 9, name: "Hot Chocolate", price: 2 },
+    { id: 10, name: "Matcha", price: 3 },
     { id: 11, name: "Mango Lemonade", price: 3 },
-    { id: 12, name: "MilkShake", price: 4 },
-    { id: 13, name: "Add Shot", price: 1 },
-    { id: 14, name: "Test 1", price: 3 }, // Fixed duplicate name
-    { id: 15, name: "Test 2", price: 3 }, // Fixed duplicate name
+    { id: 12, name: "Strawberry Lemonade", price: 3 },
+    { id: 13, name: "Milkshake", price: 3 },
+    { id: 14, name: "Sparkler", price: 3 },
+    { id: 15, name: "Add Shot", price: 1 },
 ];
 
 function MenuItem({ addToCart }) {
