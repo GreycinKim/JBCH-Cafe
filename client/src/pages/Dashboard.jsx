@@ -1,15 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 const VITE_API_URL = import.meta.env.VITE_API_URL;
-const API_BASE_URL = `${VITE_API_URL}/api/summary`;
 
 function Dashboard() {
     const [summary, setSummary] = useState(null);
     const [filter, setFilter] = useState("");
+    const API_BASE_URL = `${VITE_API_URL}/api/summary`;
 
     const fetchSummary = async () => {
         try {
-            const res = await axios.get(`API_BASE_URL`, {
+            const res = await axios.get(API_BASE_URL, {
                 params: filter ? { time: filter } : {},
             });
             setSummary(res.data);
@@ -59,6 +59,10 @@ function Dashboard() {
                             <p className="text-sm">
                                 💵 Cash: $
                                 {summary.paymentTotals?.Cash ? summary.paymentTotals.Cash.toFixed(2) : "0.00"}
+                            </p>
+                            <p className="text-sm">
+                                📑 Tab: $
+                                {summary.paymentTotals?.Tab ? summary.paymentTotals.Tab.toFixed(2) : "0.00"}
                             </p>
                         </div>
                         <div className="bg-white p-4 shadow rounded text-center">

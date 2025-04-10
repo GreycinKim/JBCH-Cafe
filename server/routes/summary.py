@@ -48,7 +48,7 @@ def get_summary():
         avg_order_value = total_revenue / total_orders if total_orders else 0
 
         item_counts = {}
-        payment_totals = {"Venmo": 0, "Cash": 0}
+        payment_totals = {"Venmo": 0, "Cash": 0, "Tab": 0}
 
         for order in orders:
             items = json.loads(order.items)
