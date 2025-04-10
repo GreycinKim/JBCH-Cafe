@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+const VITE_API_URL = import.meta.env.VITE_API_URL;
+const API_BASE_URL = `${VITE_API_URL}/api/summary`;
 
 function Dashboard() {
     const [summary, setSummary] = useState(null);
@@ -7,7 +9,7 @@ function Dashboard() {
 
     const fetchSummary = async () => {
         try {
-            const res = await axios.get(`http://localhost:5000/api/summary`, {
+            const res = await axios.get(`API_BASE_URL`, {
                 params: filter ? { time: filter } : {},
             });
             setSummary(res.data);

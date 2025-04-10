@@ -1,4 +1,6 @@
-const API_URL = "http://192.168.86.97:5000/api/orders";
+const VITE_API_URL = import.meta.env.VITE_API_URL;
+
+const API_URL = `${VITE_API_URL}/api/orders`;
 
 export const createOrder = async ({ name, cart, payment }) => {
     try {

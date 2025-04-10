@@ -1,6 +1,7 @@
 import axios from "axios";
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 
-const API_BASE_URL = 'http://192.168.86.97:5000'; // REPLACE LATER (Flask Backend URL
+const API_BASE_URL = `${VITE_API_URL}`;
 
 // A function that sends login data to the backend
 export async function loginUser(username, password) {

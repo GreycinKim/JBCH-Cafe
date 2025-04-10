@@ -69,7 +69,7 @@ function CalendarPage() {
                         type="file"
                         accept=".ics"
                         onChange={handleFileUpload}
-                        className="bg-[#28a745] hover:bg-[#218838] text-white px-4 py-2 rounded-lg shadow-md cursor-pointer"
+                        className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg shadow-md cursor-pointer"
                     />
                 </div>
 

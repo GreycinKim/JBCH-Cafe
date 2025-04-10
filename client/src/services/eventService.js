@@ -1,8 +1,9 @@
-const BASE_URL = 'http://localhost:5000';
+const VITE_API_URL = import.meta.env.VITE_API_URL;
 
+const API_BASE_URL = `${VITE_API_URL}`;
 export async function fetchEvents(setEvents) {
     try {
-        const res = await fetch(`${BASE_URL}/events`);
+        const res = await fetch(`${API_BASE_URL}/api/events`);
         const data = await res.json();
 
         if (Array.isArray(data)) {
@@ -24,7 +25,7 @@ export async function fetchEvents(setEvents) {
 
 export async function saveEvent(event) {
     try {
-        await fetch(`${BASE_URL}/events`, {
+        await fetch(`${API_BASE_URL}/api/events`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
