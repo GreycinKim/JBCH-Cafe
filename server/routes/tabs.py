@@ -4,7 +4,7 @@ from db import db
 
 tabs_bp = Blueprint('tabs', __name__, url_prefix="/api/tabs")
 
-# Get all tabs
+# GET all tabs
 @tabs_bp.route('', methods=['GET'])
 def get_tabs():
     try:
@@ -13,7 +13,7 @@ def get_tabs():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# Create a new tab
+# POST: Create a new tab
 @tabs_bp.route('', methods=['POST'])
 def create_tab():
     data = request.get_json()
@@ -31,7 +31,7 @@ def create_tab():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# Update an existing tab (price)
+# PUT: Update tab price by ID
 @tabs_bp.route('/<int:tab_id>', methods=['PUT'])
 def update_tab(tab_id):
     data = request.get_json()
@@ -50,7 +50,7 @@ def update_tab(tab_id):
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# Optional: Delete a tab
+# DELETE: Remove a tab
 @tabs_bp.route('/<int:tab_id>', methods=['DELETE'])
 def delete_tab(tab_id):
     try:
@@ -61,5 +61,58 @@ def delete_tab(tab_id):
         db.session.delete(tab)
         db.session.commit()
         return jsonify({"message": "Tab deleted"}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+# PATCH: Use tab funds (subtract)
+@tabs_bp.route('/use/<string:name>', methods=['PATCH'])
+def use_tab(name):
+    data = request.get_json()
+    amount_to_subtract = data.get("amount")
+
+    if amount_to_subtract is None:
+        return jsonify({"error": "Amount required"}), 400
+
+    try:
+        tab = Tab.query.filter(db.func.lower(Tab.name) == name.lower()).first()
+        if not tab:
+            return jsonify({"error": "Tab not found"}), 404
+
+        if tab.price < float(amount_to_subtract):
+            return jsonify({
+                "error": "Insufficient tab balance",
+                "current_balance": tab.price
+            }), 400
+
+        tab.price -= float(amount_to_subtract)
+
+        if tab.price <= 0:
+            db.session.delete(tab)
+            db.session.commit()
+            return jsonify({"message": f"Tab for {name} used up and deleted"}), 200
+        else:
+            db.session.commit()
+            return jsonify(tab.to_dict()), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+# PATCH: Add funds to an existing tab
+@tabs_bp.route('/add/<string:name>', methods=['PATCH'])
+def add_to_tab(name):
+    data = request.get_json()
+    amount = data.get("amount")
+
+    if amount is None:
+        return jsonify({"error": "Amount required"}), 400
+
+    try:
+        tab = Tab.query.filter(db.func.lower(Tab.name) == name.lower()).first()
+        if not tab:
+            return jsonify({"error": "Tab not found"}), 404
+
+        tab.price += float(amount)
+        db.session.commit()
+        return jsonify(tab.to_dict()), 200
     except Exception as e:
         return jsonify({"error": str(e)}), 500

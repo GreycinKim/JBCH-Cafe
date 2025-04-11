@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { createOrder } from "../services/orderService";
+const VITE_API_URL = import.meta.env.VITE_API_URL;
+import axios from "axios";
 
 function SubmitButton({ cart, setCart }) {
     const [showPopup, setShowPopup] = useState(false);
@@ -17,13 +19,40 @@ function SubmitButton({ cart, setCart }) {
             return;
         }
 
+        const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
         setIsLoading(true);
+
         try {
+            // Step 1: If Tab, update backend tab before order
+            if (method === "Tab") {
+                try {
+                    const res = await axios.patch(`${VITE_API_URL}/api/tabs/use/${customerName}`, {
+                        amount: total
+                    });
+
+                    if (res.status === 200) {
+                        console.log("Tab updated or cleared.");
+                    }
+                } catch (err) {
+                    if (err.response && err.response.status === 400) {
+                        alert(`Insufficient funds on tab. Current balance: $${err.response.data.current_balance.toFixed(2)}`);
+                        setIsLoading(false);
+                        return;
+                    } else {
+                        alert("Tab error: " + err.message);
+                        setIsLoading(false);
+                        return;
+                    }
+                }
+            }
+
+            // Step 2: Create the order
             const result = await createOrder({
                 name: customerName?.trim() || "Guest",
                 cart: [...cart],
                 payment: { type: method },
             });
+
             console.log("Order submitted:", result);
             setCart([]);
             setCustomerName("");
