@@ -22,25 +22,75 @@ function Orders() {
             if (filterType === "all") return true;
             return order.payment.type.toLowerCase() === filterType;
         })
-        .sort((a, b) => new Date(b.created_at) - new Date(a.created_at)); // sort by most recent
+        .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+
+    const handleExportCSV = () => {
+        if (!filteredOrders.length) return;
+
+        const headers = [
+            "Order ID",
+            "Name",
+            "Timestamp",
+            "Payment Type",
+            "Total ($)",
+            "Items"
+        ];
+
+        const rows = filteredOrders.map(order => {
+            const itemDetails = order.items.map(item =>
+                `${item.name} x${item.quantity} ($${item.price})`
+            ).join(" | ");
+
+            return [
+                order.id,
+                order.name,
+                new Date(order.created_at).toLocaleString(),
+                order.payment.type,
+                order.total.toFixed(2),
+                itemDetails
+            ];
+        });
+
+        const csvContent = [headers, ...rows].map(row =>
+            row.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(",")
+        ).join("\n");
+
+        const blob = new Blob([csvContent], { type: "text/csv" });
+        const url = URL.createObjectURL(blob);
+
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `orders_${filterType}.csv`;
+        a.click();
+        URL.revokeObjectURL(url);
+    };
 
     return (
         <div className="p-6">
             <h1 className="text-2xl font-bold mb-4">📦 Order History</h1>
 
-            {/* Filter */}
-            <div className="mb-4">
-                <label className="text-gray-700 font-medium mr-2">Filter by payment:</label>
-                <select
-                    value={filterType}
-                    onChange={(e) => setFilterType(e.target.value)}
-                    className="border px-3 py-1 rounded"
+            {/* Filter and Export */}
+            <div className="mb-4 flex gap-4 items-center">
+                <div>
+                    <label className="text-gray-700 font-medium mr-2">Filter by payment:</label>
+                    <select
+                        value={filterType}
+                        onChange={(e) => setFilterType(e.target.value)}
+                        className="border px-3 py-1 rounded"
+                    >
+                        <option value="all">All</option>
+                        <option value="cash">Cash</option>
+                        <option value="venmo">Venmo</option>
+                        <option value="tab">Tab</option>
+                    </select>
+                </div>
+
+                <button
+                    onClick={handleExportCSV}
+                    className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded"
                 >
-                    <option value="all">All</option>
-                    <option value="cash">Cash</option>
-                    <option value="venmo">Venmo</option>
-                    <option value="tab">Tab</option>
-                </select>
+                    Export as CSV
+                </button>
             </div>
 
             {/* Orders List */}
