@@ -1,19 +1,22 @@
 const boxItems = [
     { id: 1, name: "Americano", price: 2 },
     { id: 2, name: "Latte", price: 3 },
-    { id: 3, name: "Caramel Macchiato", price: 3 },
-    { id: 4, name: "White Choc. Mocha", price: 3 },
-    { id: 5, name: "Shaken Espresso", price: 3 },
-    { id: 6, name: "Ube Latte", price: 3 },
+    { id: 3, name: "Vanilla Latte", price: 3 },
+    { id: 4, name: "Hazelnut Latte", price: 3 },
+    { id: 5, name: "Caramel Macchiato", price: 3 },
+    { id: 6, name: "Shaken Espresso", price: 3 },
     { id: 7, name: "Yuzu Tea", price: 2 },
     { id: 8, name: "Grapefruit Tea", price: 2 },
     { id: 9, name: "Hot Chocolate", price: 2 },
-    { id: 10, name: "Matcha", price: 3 },
-    { id: 11, name: "Mango Lemonade", price: 3 },
-    { id: 12, name: "Strawberry Lemonade", price: 3 },
-    { id: 13, name: "Milkshake", price: 3 },
-    { id: 14, name: "Sparkler", price: 3 },
-    { id: 15, name: "Add Shot", price: 1 },
+    { id: 10, name: "Milk Tea", price: 3 },
+    { id: 11, name: "Matcha", price: 3 },
+    { id: 12, name: "Mango Lemonade", price: 3 },
+    { id: 13, name: "Strawberry Lemonade", price: 3 },
+    { id: 14, name: "Peach Lemonade", price: 3 },
+    { id: 15, name: "Banana Latte", price: 3 },
+    { id: 16, name: "Strawberry Milk", price: 3 },
+    { id: 17, name: "Add Shot", price: 1 },
+    { id: 18, name: "Alt Milk", price: 1 }
 ];
 
 function MenuItem({ addToCart }) {
